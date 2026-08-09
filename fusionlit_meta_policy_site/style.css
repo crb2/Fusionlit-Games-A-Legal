@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+  --yt-bg-main: #0f0f0f;
+  --yt-bg-surface: #181818;
+  --yt-bg-card: #212121;
+  --yt-bg-hover: #272727;
+  --yt-bg-active: #383838;
+  --yt-border: #272727;
+  --yt-border-light: #3f3f3f;
+  --yt-text-primary: #f1f1f1;
+  --yt-text-secondary: #aaaaaa;
+  --yt-text-muted: #717171;
+  --yt-red: #ff0000;
+  --yt-red-hover: #cc0000;
+  --yt-red-glow: rgba(255, 0, 0, 0.15);
+  --yt-blue: #3ea6ff;
+  --yt-blue-hover: #65b8ff;
+  --yt-radius-sm: 8px;
+  --yt-radius-md: 12px;
+  --yt-radius-lg: 18px;
+  --yt-radius-pill: 9999px;
+  --yt-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --yt-transition: all 0.2s cubic-bezier(0.05, 0, 0, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  background-color: var(--yt-bg-main);
+  color: var(--yt-text-primary);
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ambient YouTube Glow Effect */
+body::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 350px;
+  background: radial-gradient(circle, var(--yt-red-glow) 0%, rgba(15, 15, 15, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.page {
+  max-width: 900px;
+  margin: 24px auto 48px;
+  padding: 40px 36px;
+  background-color: var(--yt-bg-surface);
+  border: 1px solid var(--yt-border);
+  border-radius: var(--yt-radius-lg);
+  box-shadow: var(--yt-shadow);
+  position: relative;
+  z-index: 1;
+}
+
+/* Navigation / Back Chip */
+.nav-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--yt-bg-card);
+  color: var(--yt-text-primary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: var(--yt-radius-pill);
+  border: 1px solid var(--yt-border);
+  margin-bottom: 24px;
+  transition: var(--yt-transition);
+}
+
+.nav-back:hover {
+  background-color: var(--yt-bg-hover);
+  border-color: var(--yt-border-light);
+  color: var(--yt-blue);
+  transform: translateX(-2px);
+}
+
+/* Hero Section */
+.hero {
+  padding: 36px 40px;
+  border: 1px solid var(--yt-border);
+  border-radius: var(--yt-radius-lg);
+  background-color: var(--yt-bg-surface);
+  box-shadow: var(--yt-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--yt-red);
+}
+
+.hero h1 {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--yt-text-primary);
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.hero p {
+  color: var(--yt-text-secondary);
+  font-size: 16px;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 28px;
+}
+
+/* Card Styling */
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  border: 1px solid var(--yt-border);
+  border-radius: var(--yt-radius-md);
+  background-color: var(--yt-bg-card);
+  color: var(--yt-text-primary);
+  text-decoration: none;
+  transition: var(--yt-transition);
+  position: relative;
+}
+
+.card:hover {
+  background-color: var(--yt-bg-hover);
+  border-color: var(--yt-border-light);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.card h2 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--yt-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card h2::after {
+  content: '→';
+  color: var(--yt-blue);
+  font-size: 18px;
+  transition: var(--yt-transition);
+}
+
+.card:hover h2::after {
+  transform: translateX(4px);
+  color: var(--yt-red);
+}
+
+.card p {
+  color: var(--yt-text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Content Page Typography */
+.page h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--yt-text-primary);
+  letter-spacing: -0.5px;
+}
+
+.page h2 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 32px;
+  margin-bottom: 12px;
+  color: var(--yt-text-primary);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--yt-border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page h2::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  background-color: var(--yt-red);
+  border-radius: 2px;
+}
+
+.page p {
+  color: var(--yt-text-secondary);
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+.page a {
+  color: var(--yt-blue);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--yt-transition);
+}
+
+.page a:hover {
+  color: var(--yt-blue-hover);
+  text-decoration: underline;
+}
+
+.page strong {
+  color: var(--yt-text-primary);
+  background-color: var(--yt-bg-card);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--yt-border);
+}
+
+.page ol, .page ul {
+  padding-left: 24px;
+  margin-bottom: 20px;
+  color: var(--yt-text-secondary);
+}
+
+.page li {
+  margin-bottom: 8px;
+}
+
+/* Footer */
+footer {
+  padding: 32px 0 16px;
+  border-top: 1px solid var(--yt-border);
+  margin-top: 40px;
+  color: var(--yt-text-muted);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+footer a {
+  color: var(--yt-text-secondary);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--yt-text-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .wrap {
+    padding: 24px 16px;
+  }
+  .page {
+    padding: 24px 20px;
+    margin-top: 16px;
+  }
+  .hero {
+    padding: 24px 20px;
+  }
+  .hero h1, .page h1 {
+    font-size: 26px;
+  }
+  .card {
+    padding: 20px;
+  }
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
